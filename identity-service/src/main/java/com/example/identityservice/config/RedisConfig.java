@@ -1,4 +1,4 @@
-package com.example.identityservice.configuration;
+package com.example.identityservice.config;
 
 import com.example.identityservice.entity.InvalidatedToken;
 import org.springframework.beans.factory.annotation.Value;

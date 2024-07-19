@@ -4,8 +4,10 @@ import com.example.commonmodels.identity.request.UserCreateRequest;
 import com.example.commonmodels.identity.response.UserResponse;
 import com.example.identityservice.constant.RoleUser;
 import com.example.identityservice.entity.User;
+import com.example.identityservice.mapper.ProfileMapper;
 import com.example.identityservice.mapper.UserMapper;
 import com.example.identityservice.repository.*;
+import com.example.identityservice.repository.openfeign.ProfileFeign;
 import com.example.identityservice.service.UserService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -30,7 +32,11 @@ public class UserServiceImpl implements UserService {
 
     PermissionRepository permissionRepository;
 
+    ProfileFeign profileFeign;
+
     UserMapper userMapper;
+
+    ProfileMapper profileMapper;
 
     PasswordEncoder passwordEncoder;
 
@@ -61,6 +67,10 @@ public class UserServiceImpl implements UserService {
         Set<String> permissionGroups = permissionGroupRepository.getPermissionGroupsByUserId(userId);
 
         Set<String> permissions = permissionRepository.getPermissionsByUserId(userId);
+
+        var profileRequest =  profileMapper.userCreateToProfileCreate(request,userId);
+
+        profileFeign.createProfile(profileRequest);
 
         return userMapper.userToUserResponse(user, roles, permissionGroups, permissions);
     }
