@@ -2,7 +2,7 @@ package com.example.identityservice.security.provider.jwt;
 
 import com.example.identityservice.constant.MessageCode;
 import com.example.identityservice.exception.TokenInvalidException;
-import com.example.identityservice.repository.InvalidatedTokenRepository;
+import com.example.identityservice.repository.redis.InvalidatedTokenRepository;
 import io.jsonwebtoken.*;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationProvider;

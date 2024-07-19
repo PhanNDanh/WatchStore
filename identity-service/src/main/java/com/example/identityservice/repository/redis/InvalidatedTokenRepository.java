@@ -1,4 +1,4 @@
-package com.example.identityservice.repository;
+package com.example.identityservice.repository.redis;
 
 import com.example.identityservice.entity.InvalidatedToken;
 import lombok.RequiredArgsConstructor;
