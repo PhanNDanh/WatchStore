@@ -1,4 +1,4 @@
-package com.example.commonmodels.identity.request;
+package com.example.commonmodels.profile.response;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -7,16 +7,14 @@ import java.time.LocalDate;
 
 @Getter
 @Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class UserCreateRequest {
 
-    String username;
+public class ProfileResponse {
 
-    String password;
-
-    String rePassword;
+    String id;
 
     String firstName;
 
